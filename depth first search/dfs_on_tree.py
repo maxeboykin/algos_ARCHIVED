@@ -42,7 +42,7 @@ def dfs(node):
 max_val = MIN_VALUE
 
 def dfs(node):
-    if node is null:
+    if node is None:
         return
 
     if node.val > max_val:
@@ -113,4 +113,43 @@ def visible_tree_node(root: Node) -> int:
     return dfs(root, -float('inf'))
 
 
+# balanced binary tree 
+# a balanced binary tree is defined as a trree such that either it is empty tree
+# or both its subtree are balanced and has a height difference of at most 1 
+# my answer below is WRONG
 
+class Node:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def tree_height(tree):
+    if tree is None:
+        return 0 
+    left_height = tree_height(tree.left)
+    right_height = tree_height(tree.right)
+    if left_height == -1 or right_height == -1:
+        return -1
+    if abs(left_height - right_height) > 1:
+        return -1
+
+    return max(left_height, right_height) + 1 
+
+def is_balanced(tree: Node) -> bool:
+    return tree_height(tree) != -1
+
+
+
+
+
+
+#def is_balancedWRONG(tree: Node) -> bool:
+ #   def dfs(tree):
+  #      if not tree:
+   #         return 0
+#
+ #       left_tree = dfs(tree.left) + 1
+  #      right_tree = dfs(tree.right) + 1
+#
+   #     return (abs(left_tree - right_tree) < 2)
