@@ -15,6 +15,6 @@ if __name__ == '__main__':
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 
-fileName = "sorting/insertion_selection.py"
-
+# fileName = "sorting/merge.py"
+fileName = "binary search/sortedArrayProblems.py"
 exec(open(fileName).read())

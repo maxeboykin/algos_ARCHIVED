@@ -16,5 +16,26 @@ def insertion_sort(unsorted_list: List[int]) -> List[int]:
 
 
 inputArr = [0, 2, 4, 1, 4]
+print("inputArr", inputArr)
 newArr = insertion_sort(inputArr)
-print("inputArr", inputArr, "\ninsertion sort\n", newArr)
+print("insertion sort\n", newArr)
+
+
+# selection sort means selecting the smallest item from the unsorted pile
+
+
+def selection_sort(unsorted_list: List[int]) -> List[int]:
+    n = len(unsorted_list)
+    for i in range(n):
+        min_index = i
+        for j in range(i, n):
+            if unsorted_list[j] < unsorted_list[min_index]:
+                min_index = j
+        unsorted_list[i], unsorted_list[min_index] = unsorted_list[min_index], unsorted_list[i]
+    return unsorted_list
+
+
+inputArr = [6, 8, 3, 4, 1]
+print("\ninputArr", inputArr)
+selection_sort(inputArr)
+print("selection sort\n", inputArr)
