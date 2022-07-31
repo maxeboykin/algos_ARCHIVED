@@ -56,3 +56,23 @@ def dfs(node):
 def get_max_val(root):
     dfs(root) #kick off the dfs from the root node 
     return max_val # since we dont need to return anything from dfs function it already changes glboal variable
+
+
+# find the max depth of the tree 
+# when you get this problem do the divide and conquer method!! 
+
+class Node:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+def tree_max_depth(root: Node) -> int:
+    def dfs(root):
+        if not root:
+            return 0
+
+        return max(dfs(root.left), dfs(root.right)) + 1
+
+
