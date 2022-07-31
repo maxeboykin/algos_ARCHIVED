@@ -31,4 +31,60 @@ class Node {
     }
 }
 
+# a balanced binary tree fulfills the condition of the height difference on the left and right subtree of the node 
+# is not more than 1 
+# searching, insertion and deletion takes O(log n) instead of O(n) in an unbalanced bianry tree 
+
+# Tree Traversals! 
+
+#in-order traversal visits the left branch first, then the current node and finally the right branch 
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def in_order_traversal(root: Node):
+    if root is not None:
+        in_order_traversal(root.left)
+        print(root.val)
+        in_order_traversal(root.right)
+
+def pre_order_traversal(root: Node):
+    if root is not None:
+        print(root.val)
+        in_order_traversal(root.left)
+        in_order_traversal(root.right)
+
+def post_order_traversal(root: Node):
+    if root is not None:
+        in_order_traversal(root.left)
+        in_order_traversal(root.right)
+        print(root.val)
+
+
+
+# depth first search is a bold search, go deep as we can to look for a value 
+# and if there is noting new to discover we retrace our steps to find something new 
+# the pre order traversal of a tree is a depth first search 
+
+function dfs(root, target) {
+        if (!root) return null;
+        if (root.val === target) return root;
+
+        left = dfs(root.left)
+        if (left != null) return left
+        right = dfs(root.right)
+        # we would only get here if the entire sub left tree is null and no target is found
+        # so here we will just search the right side and return right no matter what
+        # if right finds the target it will be returned
+        # if we hit the bottom and its null we return null which is also the value of right
+        return right;
+        }
+
+
+
+
+
+
 
