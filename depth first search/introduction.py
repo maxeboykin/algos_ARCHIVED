@@ -68,13 +68,28 @@ def post_order_traversal(root: Node):
 # and if there is noting new to discover we retrace our steps to find something new 
 # the pre order traversal of a tree is a depth first search 
 
+def dfs(root, target):
+    if root is None:
+        return None
+    if root.val == target:
+        return root
+
+    left = dfs(root.left, target)
+    if (left is not None):
+        return left
+    right = dfs(root.right, target)
+
+    return right
+
+
+# javascript 
 function dfs(root, target) {
         if (!root) return null;
         if (root.val === target) return root;
 
-        left = dfs(root.left)
+        left = dfs(root.left, target)
         if (left != null) return left
-        right = dfs(root.right)
+        right = dfs(root.right, target)
         # we would only get here if the entire sub left tree is null and no target is found
         # so here we will just search the right side and return right no matter what
         # if right finds the target it will be returned
