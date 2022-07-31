@@ -76,3 +76,41 @@ def tree_max_depth(root: Node) -> int:
         return max(dfs(root.left), dfs(root.right)) + 1
 
 
+# visible tree node or number of visible nodes
+# return an int on how many nodes can be seen 
+# i dont think we can create a global variable since its all subjective 
+# based on where you are in the tree 
+# my answer is below : not 100% sure it works but its close 
+
+def visible_nodes(root: Node) -> int:
+    def dfs(root, curHeight, count):
+        if not root:
+            return 0
+        if root.val > curHeight:
+            count = count + 1
+        dfs(root.left, max(root.val, curHeight), count)
+        dfs(root.right, max(root.val, curHeight), count)
+
+        return count
+    return dfs(root, -float('inf'), 0)
+
+
+# answer from algo monster
+def visible_tree_node(root: Node) -> int:
+    def dfs(root, max_soFar):
+        if not root:
+            return 0
+
+        total = 0
+
+        if root.val >= max_soFar:
+            total += 1 
+
+        total += dfs(root.left, max(max_soFar, root.val))
+        total += dfs(root.right, max(max_soFar, root.val))
+
+        return total
+    return dfs(root, -float('inf'))
+
+
+
