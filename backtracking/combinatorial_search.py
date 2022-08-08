@@ -52,7 +52,7 @@ def ternary_tree_paths(root):
 
         # dfs on each non-null child 
         for child in root.children:
-            if child is not None
+            if child is not None:
                 path.append(str(root.val))
                 dfs(child, path, res)
                 path.pop()
