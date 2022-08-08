@@ -101,5 +101,53 @@ def valid_bst(root: Node) -> bool:
     return dfs(root, -inf, inf) 
 
 
+# the time complexity will be O(n) since there are n nodes and n - 1 edges so its O(2n-1) 
+# which is O(n)
+
+# insert into a binary tree 
+# given a root node of a valid BST and a value to insert into the tree, return a new root node 
+# with the value isnerseted 
+def insert_bst(bst:Node, val: int) -> Node:
+    def dfs(bst, val):
+        if bst is None:
+            return Node(val) #really important. at first i said return bst but 
+        #this is where you insert the node each time!! 
+        elif bst.val > val:
+            return dfs(bst.left, val)
+        elif bst.val < val:
+            return dfs(bst.right, val)
+        return bfs
+    return dfs(root, value)
+
+
+#invert a binary tree!!
+class Node:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+# my answer is below 
+def invert_binary_tree(tree: Node) -> Node:
+    def dfs(tree):
+        if tree is None:
+            return None
+        tree_left = dfs(tree.left)
+        tree_right = dfs(tree.right)
+        tree.left = tree_right
+        tree.right = tree_left
+        return tree 
+
+# solutions answer 
+def invert_binary_tree(tree: Node) -> Node:
+    def dfs(tree):
+        if tree is None:
+            return None
+        return Node(tree.val, dfs(tree.right), dfs(tree.left))
+    return dfs(tree)
+
+
+
+
 
 
