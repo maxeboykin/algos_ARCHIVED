@@ -8,7 +8,7 @@ def dfs(node, state):
         return
     left = dfs(node.left, state)
     right = dfs(node.right, state)
-return
+    return
 # something to think about is what are we returning the value of from
 # in terms of passing a value up from child to parent
 # sometimes we want to return teh depth, sometimes the node or a null value if no node
