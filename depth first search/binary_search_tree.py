@@ -66,3 +66,40 @@ def insert(tree, val):
 # this is called an AVL tree and uses tree rotation after insertion to re balance the tree 
 # a self balancing trree has a height of O(logn)
 
+ # applications of BSTS 
+ # BSTs are used to look up existence of certain objects. insertion is much lowerer than 
+ # sorted lists and its good for dynamic insertion 
+ # howevcer most lanauges use hash tables, which is another way of looking up the existence 
+ # of an object in a ocllection
+ # most implementations are dynamically sized which can cause the lookup and insertion of items to 
+ # approach O(1), so usually hash tables are preferred to BST 
+
+ # hash tables are unsorted while BSTs are. if you want to maintain a sorted order
+ # use BST 
+ # its easy to look up the first element in the bST that is greater or smaller than a lookup 
+ # value than a hash table 
+ # its easy to find the k-th largest, smallest element 
+ # dynamic hash tables usually have a lot of unused memory in order to make the 
+ # insertion or deletion time approach O(1), where as BST uses all the memory
+ # the user requested 
+
+# determine if the tree is a valid BST 
+class Node:
+    def __init__(self, val, left=None, right=None) -> None:
+        self.val = val
+        self.left = left
+        self.right = right
+
+def valid_bst(root: Node) -> bool:
+    def dfs(root, min_val, max_val):
+        if not root:
+            return True
+        if root.val < min_val or root.val > max_val:
+            return False
+        else:
+            return dfs(root.left, min_val, root.value) and dfs(root.right, root.value, max_val)
+    return dfs(root, -inf, inf) 
+
+
+
+
